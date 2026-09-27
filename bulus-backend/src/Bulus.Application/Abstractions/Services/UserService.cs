@@ -1,7 +1,6 @@
 using Bulus.Application.Abstractions.Identity;
-using Bulus.Application.Abstractions.Persistence;
 using Bulus.Application.Abstractions.Services;
-using Bulus.Application.DTOs.Users;
+using Bulus.Application.DTOs;
 
 namespace Bulus.Application.Services;
 

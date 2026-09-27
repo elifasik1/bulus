@@ -1,4 +1,4 @@
-namespace Bulus.Application.DTOs.Users;
+namespace Bulus.Application.DTOs;
 
 public record CurrentUserDto(
     Guid Id,
@@ -6,11 +6,3 @@ public record CurrentUserDto(
     string Role,
     bool IsActive,
     ProfileDto? Profile);
-
-public record ProfileDto(
-    string FirstName,
-    string LastName,
-    string Username,
-    string? Bio,
-    Guid? CityId,
-    string? ProfileImageUrl);

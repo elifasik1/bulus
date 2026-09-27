@@ -18,9 +18,13 @@ import {
 import Logo from "@/components/brand/Logo";
 import Avatar from "@/components/ui/Avatar";
 import { useTheme } from "@/context/ThemeContext";
+import { useAuth } from "@/context/AuthContext";
+import { useRouter } from "next/navigation";
 
 export default function AppHeader() {
   const pathname = usePathname();
+  const router = useRouter();
+  const { user, logout } = useAuth();
 
   const [selectedCity, setSelectedCity] = useState("İstanbul");
   const [isCityOpen, setIsCityOpen] = useState(false);
@@ -29,6 +33,25 @@ export default function AppHeader() {
   const profileMenuRef = useRef<HTMLDivElement>(null);
 
   const { theme, toggleTheme } = useTheme();
+
+  const displayName = user?.profile
+    ? `${user.profile.firstName} ${user.profile.lastName}`.trim()
+    : user?.email
+    ? user.email.split("@")[0]
+    : "Misafir";
+
+  const displayHandle = user?.profile?.username
+    ? `@${user.profile.username}`
+    : user?.email
+    ? user.email
+    : "";
+
+  const avatarSrc = user?.profile?.profileImageUrl || "/brand/hero-illustration.png";
+
+  const handleLogout = async () => {
+    await logout();
+    router.push("/giris");
+  };
 
   const cities = [
     "İstanbul",
@@ -207,8 +230,8 @@ export default function AppHeader() {
                 aria-expanded={isProfileOpen}
               >
                 <Avatar
-                  src="/brand/hero-illustration.png"
-                  alt="Elif Aşık"
+                  src={avatarSrc}
+                  alt={displayName}
                   size="sm"
                   className={`
                     ring-2 transition-all
@@ -240,18 +263,18 @@ export default function AppHeader() {
                   <div className="px-4 py-4 bg-[#FAF7F2] dark:bg-[#2a2521] border-b border-[#F0E6DA] dark:border-[#332e29]">
                     <div className="flex items-center gap-3">
                       <Avatar
-                        src="/brand/hero-illustration.png"
-                        alt="Elif Aşık"
+                        src={avatarSrc}
+                        alt={displayName}
                         size="md"
                       />
 
                       <div className="min-w-0">
                         <p className="text-sm font-extrabold text-[#2F1C31] dark:text-[#F3EFEA] truncate">
-                          Elif Aşık
+                          {displayName}
                         </p>
 
                         <p className="text-[11px] text-[#7E7068] dark:text-[#B5AAA0] truncate">
-                          Bilgisayar Mühendisi
+                          {displayHandle}
                         </p>
                       </div>
                     </div>
@@ -339,9 +362,10 @@ export default function AppHeader() {
                   {/* LOGOUT */}
                   <div className="p-2 pt-0">
                     <div className="border-t border-[#F0E6DA] dark:border-[#332e29] pt-2">
-                      <Link
-                        href="/giris"
-                        className="flex items-center gap-3 px-3 py-3 rounded-2xl hover:bg-[#FFF0F0] dark:hover:bg-[#3b1c1c] transition-colors group"
+                      <button
+                        type="button"
+                        onClick={handleLogout}
+                        className="w-full flex items-center gap-3 px-3 py-3 rounded-2xl hover:bg-[#FFF0F0] dark:hover:bg-[#3b1c1c] transition-colors group text-left cursor-pointer"
                       >
                         <div className="w-9 h-9 rounded-xl bg-[#FFF0F0] dark:bg-[#3b1c1c] text-red-500 flex items-center justify-center">
                           <LogOut size={17} />
@@ -361,7 +385,7 @@ export default function AppHeader() {
                           size={15}
                           className="text-red-300 group-hover:translate-x-0.5 transition-transform"
                         />
-                      </Link>
+                      </button>
                     </div>
                   </div>
                 </div>

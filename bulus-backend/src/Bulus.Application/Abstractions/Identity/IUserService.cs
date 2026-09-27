@@ -1,6 +1,6 @@
-using Bulus.Application.DTOs.Users;
+using Bulus.Application.DTOs;
 
-namespace Bulus.Application.Abstractions.Services;
+namespace Bulus.Application.Abstractions.Identity;
 
 public interface IUserService
 {

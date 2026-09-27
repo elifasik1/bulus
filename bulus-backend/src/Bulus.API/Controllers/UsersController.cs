@@ -1,4 +1,4 @@
-using Bulus.Application.Abstractions.Services;
+using Bulus.Application.Abstractions.Identity;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 

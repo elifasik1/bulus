@@ -225,7 +225,7 @@ export default function KaydedilenlerPage() {
 
           {/* Summary */}
           <Card
-            padding="none"
+            padding="md"
             className="mb-7 overflow-hidden border border-[#eadbd6] bg-white shadow-[0_12px_40px_rgba(75,46,77,0.06)]"
           >
             <div className="relative px-5 py-5 sm:px-6">
@@ -389,7 +389,7 @@ function SavedOpportunityCard({
   return (
     <Card
       hover
-      padding="none"
+      padding="md"
       className="group overflow-hidden border border-[#eadbd6] bg-white shadow-[0_8px_30px_rgba(75,46,77,0.05)]"
     >
       <div className="p-5">
@@ -401,7 +401,7 @@ function SavedOpportunityCard({
               Kaydedildi
             </span>
 
-            <Badge variant="secondary">{opportunity.category}</Badge>
+            <Badge variant="lilac">{opportunity.category}</Badge>
           </div>
 
           <button
@@ -501,7 +501,7 @@ function SavedPersonCard({
   return (
     <Card
       hover
-      padding="none"
+      padding="md"
       className="group overflow-hidden border border-[#eadbd6] bg-white shadow-[0_8px_30px_rgba(75,46,77,0.05)]"
     >
       <div className="p-5">

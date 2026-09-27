@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Plus_Jakarta_Sans, Fraunces } from "next/font/google";
 import { ThemeProvider } from "@/context/ThemeContext";
+import { AuthProvider } from "@/context/AuthContext";
 import "./globals.css";
 
 const plusJakartaSans = Plus_Jakarta_Sans({
@@ -46,7 +47,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="tr" className={`${plusJakartaSans.variable} ${fraunces.variable} h-full antialiased`}>
       <body className="min-h-full flex flex-col font-[family-name:var(--font-plus-jakarta)] bg-[#FAF7F2] dark:bg-[#121110] text-[#2C2623] dark:text-[#F3EFEA] transition-colors duration-200">
         <ThemeProvider>
-          {children}
+          <AuthProvider>
+            {children}
+          </AuthProvider>
         </ThemeProvider>
       </body>
     </html>

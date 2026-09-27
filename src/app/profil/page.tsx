@@ -1,8 +1,9 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { useAuth } from "@/context/AuthContext";
 import {
   ArrowRight,
   Briefcase,
@@ -139,7 +140,22 @@ const connections = [
 ];
 
 export default function ProfilePage() {
+  const { user } = useAuth();
   const [profile, setProfile] = useState(initialProfile);
+
+  useEffect(() => {
+    if (user) {
+      const fullName = user.profile
+        ? `${user.profile.firstName} ${user.profile.lastName}`.trim()
+        : user.email.split("@")[0];
+
+      setProfile((prev) => ({
+        ...prev,
+        name: fullName || prev.name,
+        bio: user.profile?.bio || prev.bio,
+      }));
+    }
+  }, [user]);
 
   const [wanted, setWanted] = useState(initialWanted);
   const [offered, setOffered] = useState(initialOffered);

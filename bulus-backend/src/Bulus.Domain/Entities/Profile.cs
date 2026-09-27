@@ -24,18 +24,21 @@ public class Profile : BaseEntity
     private Profile()
     {
     }
-
-    public Profile(
-        Guid userId,
-        string firstName,
-        string lastName,
-        string username)
-    {
-        Id = Guid.NewGuid();
-        UserId = userId;
-        FirstName = firstName;
-        LastName = lastName;
-        Username = username;
-        CreatedAt = DateTime.UtcNow;
-    }
+public Profile(
+    Guid userId,
+    string firstName,
+    string lastName,
+    string username,
+    Guid? cityId = null,
+    string? bio = null)
+{
+    Id = Guid.NewGuid();
+    UserId = userId;
+    FirstName = firstName;
+    LastName = lastName;
+    Username = username;
+    CityId = cityId;
+    Bio = bio;
+    CreatedAt = DateTime.UtcNow;
+}
 }

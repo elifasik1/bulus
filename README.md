@@ -1,394 +1,176 @@
-Buluş
+# 🤝 Buluş
 
-Çevren yoksa, çevreni oluştur.
+> **Çevren yoksa, çevreni oluştur.**
 
-Buluş, insanların yalnızca ilan görmek yerine birbirleriyle gerçek
-fırsatlar ve ihtiyaçlar üzerinden bağlantı kurmasını amaçlayan bir
-fırsat ağıdır.
+Buluş; insanların yalnızca ilan listeleri arasında kaybolması yerine, birbirleriyle gerçek **fırsatlar** ve **ihtiyaçlar** üzerinden doğrudan bağlantı kurmasını sağlayan insan ve fırsat odaklı bir sosyal ağ platformudur.
 
-İş, staj, proje, mentorluk, ekip arkadaşı, kullanıcı testi, tez
-araştırması, eğitim ve benzeri fırsatlar insanların doğrudan
-birbirlerine ulaşabileceği şekilde paylaşılır.
+---
 
-🎯 Vizyon
+## 🎯 Vizyon & Ürün İlkeleri
 
-Buluş'un amacı, özellikle yeni mezunlar ve fırsatlara erişimi kısıtlı
-kişiler için:
+Buluş, özellikle öğrenciler, yeni mezunlar ve fırsatlara erişimi kısıtlı bireyler için networking engellerini ortadan kaldırmayı hedefler:
 
-çevre eksikliğini azaltmak,
+- 👥 **İnsan ve Fırsat Merkezli:** Şirket reklamları ve kurumsal gürültüden uzak, doğrudan insan-insan etkileşimi.
+- 🌐 **Demokratik Erişim:** Küçük şehirlerdeki ve çevresi kısıtlı yeteneklerin fırsatlara erişimini kolaylaştırma.
+- 🎯 **Gerçek İhtiyaçlar:** Vanity metric'ler (beğeni/takipçi avı) yerine somut eşleşmeler ve yardımlaşma.
+- 💬 **Düşük Gürültü:** İş, staj, mentorluk, proje arkadaşı, tez araştırması veya kullanıcı testi gibi spesifik odak noktaları.
 
-gerçek insanları gerçek ihtiyaçlarla buluşturmak,
+---
 
-fırsatlara erişimi daha demokratik hale getirmek,
+## 🛠️ Teknoloji Yığını
 
-şirket merkezli değil, insan ve fırsat merkezli bir ağ
-oluşturmak.
+### **Frontend**
+- **Framework:** Next.js (React / TypeScript)
+- **Stil & Animasyon:** Tailwind CSS, Framer Motion
+- **İkonlar:** Lucide React
 
-İhtiyacın olan insan, sandığından daha yakın.
+### **Backend & Veritabanı**
+- **Platform:** .NET Core (ASP.NET Core Web API)
+- **Mimari:** Clean Architecture (Domain, Application, Infrastructure, API)
+- **ORM:** Entity Framework Core (PostgreSQL / Supabase)
+- **Kimlik Doğrulama:** Supabase Auth & JWT Bearer Token
 
-🏗️ Proje Durumu
+---
 
-Proje aktif geliştirme aşamasındadır.
+## 🏗️ Proje Mimarisi
 
-Tamamlananlar
+Backend, Clean Architecture prensiplerine uygun olarak katmanlara ayrılmıştır:
 
-.NET backend solution
-
-Clean Architecture / layered architecture
-
-Domain entity'leri
-
-EF Core yapılandırmaları
-
-PostgreSQL / Supabase bağlantısı
-
-Initial database migration
-
-Supabase Auth JWT doğrulama altyapısı
-
-Current user abstraction
-
-User repository/service altyapısı
-
-GET /api/users/me
-
-Swagger + Bearer authentication
-
-Temel veritabanı tabloları
-
-Sıradaki adımlar
-
-Supabase Auth gerçek kullanıcı ile uçtan uca test
-
-User/Profile provisioning ve onboarding API
-
-Şehir ve kategori seed verileri
-
-Opportunity CRUD API
-
-Fırsat filtreleme ve keşfet API'leri
-
-Frontend ↔ Backend entegrasyonu
-
-Mesajlaşma API'leri
-
-Bildirimler
-
-Kaydedilen fırsatlar
-
-Admin authorization
-
-Validation ve global exception handling
-
-Test kapsamının genişletilmesi
-
-Supabase Storage ile profil görselleri
-
-Realtime messaging
-
-🧩 Teknoloji Yığını
-
-Backend
-
-C#
-
-ASP.NET Core Web API
-
-Entity Framework Core
-
-PostgreSQL
-
-Npgsql
-
-Supabase
-
-Authentication
-
-Supabase Auth
-
-JWT Bearer Authentication
-
-Frontend
-
-Next.js
-
-React
-
-TypeScript
-
-Tailwind CSS
-
-Framer Motion
-
-Lucide React
-
-📐 Mimari
-
-Backend, Clean Architecture prensipleri doğrultusunda katmanlara
-ayrılmıştır:
-
-Bulus.slnx
+```text
+Bulus/
+├── bulus-backend/               # .NET Core Backend Solution
+│   ├── src/
+│   │   ├── Bulus.Domain/        # Entity'ler, Enums, Value Object'ler
+│   │   ├── Bulus.Application/   # Use Case'ler, DTO'lar, Interfaces
+│   │   ├── Bulus.Infrastructure/# EF Core, Supabase Auth, Repositories
+│   │   └── Bulus.API/           # Web API Controllers, Middleware, Filters
+│   └── tests/
+│       ├── Bulus.Domain.Tests/
+│       └── Bulus.Application.Tests/
 │
-├── src/
-│   ├── Bulus.Domain/
-│   │   ├── Entities/
-│   │   ├── Enums/
-│   │   ├── ValueObjects/
-│   │   └── Common/
-│   │
-│   ├── Bulus.Application/
-│   │   ├── Abstractions/
-│   │   │   ├── Persistence/
-│   │   │   ├── Identity/
-│   │   │   └── Services/
-│   │   ├── Features/
-│   │   ├── DTOs/
-│   │   ├── Behaviors/
-│   │   └── Common/
-│   │
-│   ├── Bulus.Infrastructure/
-│   │   ├── Persistence/
-│   │   │   ├── Context/
-│   │   │   ├── Configurations/
-│   │   │   ├── Repositories/
-│   │   │   └── Migrations/
-│   │   ├── Identity/
-│   │   └── Services/
-│   │
-│   └── Bulus.API/
-│       ├── Controllers/
-│       ├── Middleware/
-│       ├── Extensions/
-│       └── Filters/
-│
-└── tests/
-    ├── Bulus.Domain.Tests/
-    ├── Bulus.Application.Tests/
-    └── Bulus.API.Tests/
+└── src/                         # Next.js Frontend App
+    ├── app/                     # Next.js App Router (Sayfalar & Route'lar)
+    ├── components/              # UI Component'leri (UI, Navigation, Brand)
+    ├── context/                 # React State & Context (ThemeContext vb.)
+    └── types/                   # TypeScript Tip Tanımlamaları
+```
 
-Katman bağımlılıkları
+### Katman Bağımlılık Yönü
+Domain ⟵ Application ⟵ Infrastructure ⟵ API
 
-Domain
-  ↑
-Application
-  ↑
-Infrastructure
-  ↑
-API
+> 💡 *Domain ve Application katmanları harici bağımlılıklardan tamamen izoledir. Supabase ve veritabanı entegrasyonları yalnızca Infrastructure katmanında yönetilir.*
 
-Domain ve Application katmanları Supabase'e doğrudan bağımlı değildir.
-Supabase entegrasyonu Infrastructure katmanında tutulur.
+---
 
-🧠 Domain Model
+## 🧠 Domain Modeli
 
-Temel domain varlıkları:
+```mermaid
+erDiagram
+    USER ||--o{ PROFILE : has
+    USER ||--o{ OPPORTUNITY : creates
+    USER ||--o{ NOTIFICATION : receives
+    USER ||--o{ SAVED_ITEM : saves
+    OPPORTUNITY ||--|| CATEGORY : categorizes
+    OPPORTUNITY ||--|| CITY : located_in
+    CONVERSATION ||--|{ CONVERSATION_PARTICIPANT : includes
+    CONVERSATION ||--o{ MESSAGE : contains
+```
 
-User
- ├── Profile
- ├── Opportunities
- ├── Notifications
- └── SavedItems
+### Fırsat (Opportunity) Türleri
+- 💼 **Job** (İş)
+- 🎓 **Internship** (Staj)
+- 🚀 **Project** (Proje Katılımı)
+- 🤝 **Mentorship** (Mentorluk)
+- 👥 **TeamMember** (Ekip Arkadaşı)
+- 🧪 **UserTesting** (Kullanıcı Testi)
+- 📚 **ThesisResearch** (Tez / Akademik Araştırma)
+- 📖 **Education** (Eğitim / Atölye)
 
-Opportunity
- ├── Category
- └── City
+---
 
-Conversation
- ├── ConversationParticipants
- └── Messages
+## 🔐 Authentication Akışı
 
-Temel roller:
+Kimlik doğrulama işlemleri **Supabase Auth** üzerinden yürütülür ve JWT ile API güvenliği sağlanır:
 
-User
-Admin
+```text
+Frontend (Next.js) ──(Supabase Auth)──> Supabase Services
+       │                                     │
+       │ (JWT Token)                         │ (Auth UUID)
+       ▼                                     ▼
+ ASP.NET Core API ──(CurrentUserService)──> PostgreSQL DB
+```
 
-Fırsat türleri:
+1. Kullanıcı Frontend üzerinden Supabase ile giriş yapar.
+2. Elde edilen JWT Bearer token ile API'ye istek gönderilir.
+3. API, `CurrentUserService` vasıtasıyla `sub` talebinden (Supabase UUID) kullanıcıyı doğrular ve kendi veritabanındaki `User` varlığı ile eşleştirir.
 
-Job
-Internship
-Project
-Mentorship
-TeamMember
-UserTesting
-ThesisResearch
-Education
-Other
+---
 
-🔐 Authentication Akışı
+## 🚀 Yerel Geliştirme (Local Development)
 
-Kimlik doğrulama Supabase Auth tarafından yönetilir.
+### Ön Gereksinimler
+- [.NET SDK](https://dotnet.microsoft.com/)
+- [Node.js](https://nodejs.org/) & npm
+- PostgreSQL veya Supabase Hesabı
 
-Frontend
-   │
-   │ Supabase Auth
-   ▼
-Supabase
-   │
-   │ JWT
-   ▼
-.NET API
-   │
-   │ JWT validation
-   ▼
-CurrentUserService
-   │
-   │ User UUID (sub)
-   ▼
-PostgreSQL
+### 1. Backend'i Çalıştırma
+```bash
+# Backend dizinine geçin
+cd bulus-backend
 
-Supabase Auth kullanıcısının UUID'si, uygulamadaki User.Id ile
-eşleştirilir.
-
-Parolalar uygulamanın users tablosunda tutulmaz. Kimlik bilgileri
-Supabase Auth tarafından yönetilir.
-
-🗄️ Veritabanı
-
-EF Core migration'ları PostgreSQL üzerinde çalıştırılır.
-
-Temel tablolar:
-
-users
-profiles
-opportunities
-categories
-cities
-conversations
-conversation_participants
-messages
-notifications
-saved_items
-
-Migration geçmişi:
-
-__EFMigrationsHistory
-
-Migration oluşturma
-
-dotnet ef migrations add MigrationName --project src/Bulus.Infrastructure --startup-project src/Bulus.API --output-dir Persistence/Migrations
-
-Database güncelleme
-
-dotnet ef database update --project src/Bulus.Infrastructure --startup-project src/Bulus.API
-
-⚙️ Local Development
-
-Gereksinimler
-
-.NET SDK
-
-PostgreSQL / Supabase
-
-Node.js
-
-npm
-
-Backend'i çalıştırma
-
+# Bağımlılıkları yükleyin ve projeyi derleyin
 dotnet restore
 dotnet build
+
+# User Secrets ile veritabanı bağlantısını tanımlayın
+dotnet user-secrets set "ConnectionStrings:DefaultConnection" "YOUR_POSTGRESQL_CONNECTION_STRING" --project src/Bulus.API/Bulus.API.csproj
+
+# API'yi başlatın
 dotnet run --project src/Bulus.API
+```
+> API başladığında Swagger UI üzerinden endpoint'leri test edebilirsiniz.
 
-Swagger geliştirme ortamında API endpoint'lerini test etmek için
-kullanılabilir.
+### 2. EF Core Veritabanı Güncellemeleri
+```bash
+# Yeni Migration ekleme
+dotnet ef migrations add <MigrationName> --project src/Bulus.Infrastructure --startup-project src/Bulus.API --output-dir Persistence/Migrations
 
-Configuration
+# Veritabanını güncelleme
+dotnet ef database update --project src/Bulus.Infrastructure --startup-project src/Bulus.API
+```
 
-Connection string gibi hassas bilgiler repository'ye yazılmamalıdır.
+### 3. Frontend'i Çalıştırma
+```bash
+# Kök dizinde bağımlılıkları yükleyin
+npm install
 
-Local geliştirmede .NET User Secrets kullanılabilir:
+# Geliştirme sunucusunu başlatın
+npm run dev
+```
 
-dotnet user-secrets set "ConnectionStrings:DefaultConnection" "YOUR_CONNECTION_STRING" --project src/Bulus.API/Bulus.API.csproj
+---
 
-📡 API
+## 🛣️ Yol Haritası (Roadmap)
 
-Mevcut temel endpoint'lerden bazıları:
+- [x] Clean Architecture Backend kurulumu (.NET)
+- [x] Domain modeli & EF Core yapılandırması
+- [x] Supabase PostgreSQL entegrasyonu
+- [x] JWT Authentication & Swagger entegrasyonu
+- [x] Next.js Frontend temel UI / Sayfa tasarımları
+- [ ] Auth & Onboarding uçtan uca akışı
+- [ ] Opportunity CRUD ve Filtreleme / Keşfet API'leri
+- [ ] Anlık Mesajlaşma (Realtime Messaging)
+- [ ] Bildirim Sistemi & Kaydedilenler
+- [ ] Admin Paneli & Yetkilendirme
 
-GET /api/users/me
-GET /auth/test
-GET /health/database
+---
 
-Korunan endpoint'ler JWT Bearer token gerektirir.
+## 🔒 Güvenlik Notu
 
-Swagger üzerinden:
+Depoya kesinlikle hassas bilgiler (**Database parolaları**, **Supabase secret key'leri**, **JWT secret'ları**, **.env dosyaları**) commit edilmemelidir. Geliştirme ortamında **User Secrets**, canlı ortamda ise ilgili platformun **Environment Variables** mekanizması tercih edilmelidir.
 
-Authorize
-→ Bearer token
-→ endpoint'i çağır
+---
 
-🧪 Testing
+## 📄 Lisans
 
-Test projeleri:
-
-tests/
-├── Bulus.Domain.Tests/
-├── Bulus.Application.Tests/
-└── Bulus.API.Tests/
-
-Testler genişletilerek domain kuralları, application servisleri ve API
-davranışları kapsanacaktır.
-
-🎨 Ürün İlkeleri
-
-Buluş bir LinkedIn klonu veya klasik bir iş ilanı platformu olarak
-tasarlanmamaktadır.
-
-Temel ürün prensipleri:
-
-İnsan merkezli
-
-Fırsat merkezli
-
-Gerçek bağlantılar
-
-Düşük gürültü
-
-Şirket reklamlarından uzak deneyim
-
-Vanity metric yerine gerçek eşleşmeler
-
-Küçük şehirlerdeki fırsat erişimini destekleme
-
-🛣️ Roadmap
-
-[✓] Proje kurulumu
-[✓] Clean Architecture
-[✓] Domain modeli
-[✓] EF Core
-[✓] Supabase PostgreSQL
-[✓] JWT Authentication altyapısı
-[✓] Swagger
-[ ] Auth + onboarding
-[ ] Opportunity API
-[ ] Feed / Explore
-[ ] Messaging
-[ ] Notifications
-[ ] Saved Opportunities
-[ ] Admin
-[ ] Frontend integration
-[ ] Production hardening
-
-🔒 Güvenlik
-
-Repository'ye aşağıdakiler kesinlikle commit edilmemelidir:
-
-Database password
-
-Supabase secret key
-
-JWT secret/private keys
-
-API keys
-
-.env içerisindeki hassas bilgiler
-
-User Secrets içerikleri
-
-Üretim ortamında gizli bilgiler deployment platformunun
-secret/environment variable mekanizması üzerinden sağlanmalıdır.
-
-📄 Lisans
-
-Lisans modeli proje geliştirme sürecinde belirlenecektir.
-
-Buluş --- Çevren yoksa, çevreni oluştur.
+Bu proje geliştirme aşamasındadır. Lisans şartları ilerleyen süreçte netleştirilecektir.
