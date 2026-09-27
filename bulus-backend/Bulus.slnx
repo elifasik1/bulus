@@ -1,0 +1,13 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/Bulus.API/Bulus.API.csproj" />
+    <Project Path="src/Bulus.Application/Bulus.Application.csproj" />
+    <Project Path="src/Bulus.Domain/Bulus.Domain.csproj" />
+    <Project Path="src/Bulus.Infrastructure/Bulus.Infrastructure.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/Bulus.API.Tests/Bulus.API.Tests.csproj" />
+    <Project Path="tests/Bulus.Application.Tests/Bulus.Application.Tests.csproj" />
+    <Project Path="tests/Bulus.Domain.Tests/Bulus.Domain.Tests.csproj" />
+  </Folder>
+</Solution>

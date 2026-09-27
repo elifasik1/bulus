@@ -1,0 +1,27 @@
+# .NET build output
+bin/
+obj/
+
+# Visual Studio
+.vs/
+
+# JetBrains Rider
+.idea/
+
+# Test results
+TestResults/
+
+# Coverage
+coverage/
+
+# Environment files
+.env
+.env.*
+!.env.example
+
+# User secrets
+secrets.json
+
+# OS
+.DS_Store
+Thumbs.db
